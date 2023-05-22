@@ -128,10 +128,10 @@ In this fourth part, we have created the lambda role. This role will have AWSLam
 
 In this part, we defined an outputs section to save the result of the stack state. If successful it will print out the Status as 'Creation Complete'.
 
-Outputs:
+`Outputs:
   Results:
     Description: Create Result
-    Value: !GetAtt GroupManagedPolicyFunction.Status
+    Value: !GetAtt GroupManagedPolicyFunction.Status`
 
 
 ## Monitoring and debugging
