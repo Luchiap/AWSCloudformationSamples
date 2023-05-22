@@ -1,12 +1,14 @@
-Summary
+## Summary
 
 Cloudformation does not natively support attaching an AWS Managed Policy to an existing IAM Group. This example shows how to achieve this with Lambda and custom resources.
-Main Text
+
+## Main Text
 
 When CloudFormation does not support a particular property in a resource even though it's available via the AWS API, we can use custom resources to workaround it while the feature request is implemented.
 
 This also serves as another example on how to use custom resources as it can be confusing, and how to use Lambda functions with Python.
-Pre-requisites
+
+## Pre-requisites
 
     Create an IAM User Group in the console, or have one available already
     Have an arn ready for an AWS Managed Policy. For example, for 'AdministratorAccess' the arn is 'arn:aws:iam::aws:policy/AdministratorAccess'
@@ -22,10 +24,8 @@ The following Template performs these actions:
     Attaches the inputted AWS Managed Policy during stack creation and detaches it during stack deletion.
     Saves a status in the output section of the stack. This status will depend on current stack condition. Also retrievable in CloudWatch logs monitoring of the lambda function.
 
-Template sections, (full code in the references section and as a text file)
 
-
-Parameters Section
+## Parameters Section
 
 In this section, during stack creation you will provide two parameters. An already existing IAM User Group and an AWS Managed Policy of your choice.
 
@@ -37,7 +37,7 @@ Parameters:
     Type: String
 
 
-Resources Section
+## Resources Section
 
 In this first part, we define the lambda function with the following properties, we reference a role which we create in this same stack and we add as environment variables the parameters we defined before. This is needed to pass these values into the code section of the lambda. The runtime is python 3.9.
 
@@ -124,7 +124,7 @@ In this fourth part, we have created the lambda role. This role will have AWSLam
             - iam:*
             Resource: '*'
 
-Outputs section
+## Outputs section
 
 In this part, we defined an outputs section to save the result of the stack state. If successful it will print out the Status as 'Creation Complete'.
 
@@ -134,7 +134,7 @@ Outputs:
     Value: !GetAtt GroupManagedPolicyFunction.Status
 
 
-Monitoring and debugging
+## Monitoring and debugging
 
 In case a custom resource fails to deploy for whatever reason, CloudFormation will by default delete the lambda that was created to host the custom resource.
 To prevent this you will need to select 'Preserve successfully provisioned resources' [4] in the Stack Failure Options during Stack Creation.
@@ -152,7 +152,7 @@ ResponseBody = response
 Then this is the result of the successful deployment, there are lots of 'customizations' possible for this property.
 
 
-References
+## References
 
 [1] Code
 
