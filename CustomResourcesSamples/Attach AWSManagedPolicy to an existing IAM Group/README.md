@@ -233,10 +233,10 @@ Resources:
             - logs:PutLogEvents
             - iam:*
             Resource: '*'
-Outputs:
+`Outputs:
   Results:
     Description: Create Result
-    Value: !GetAtt GroupManagedPolicyFunction.Status
+    Value: !GetAtt GroupManagedPolicyFunction.Status`
 
 [2] https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/iam/client/attach_group_policy.html
 
